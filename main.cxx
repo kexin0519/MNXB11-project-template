@@ -1,15 +1,13 @@
-
+#include "Circle.h"
+#include "GeometryIO.h"
+#include "Rectangle.h"
+#include "parse_csv.h"
 #include <iostream>
-int main(int argc, char *argv[]) {
-  std::cout << "I am just a code template, you need to implement the "
-               "functionality you want to use yourself!"
-            << std::endl;
-
-  std::cout << "We were passed " << argc
-            << " command line arguments, the first of which was " << argv[0]
-            << std::endl;
-  std::cout << "With a good CLI library, we could use the command line "
-               "arguments to make a useful program."
-            << std::endl;
+int main() {
+  const std::string csv_file{"rectangle_dimensions.csv"};
+  auto rectangles{parse_rectangles(csv_file)};
+  for (auto rectangle : rectangles) {
+    std::cout << "Rectangle: " << rectangle.width() << ", " << rectangle.height() << " has area " << rectangle.area() << std::endl;
+  }
   return 0;
 }
